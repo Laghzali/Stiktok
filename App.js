@@ -11,11 +11,8 @@ import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons'; 
-
+import AddWindow from './Componants/AddWindow'
 class LiveIcon extends React.Component {
-  pressHandler = () => {
-
-  }//#959ba1
   render() {
     return (
     <Feather name="radio" size={28} color={this.props.tintcolor} />
@@ -64,7 +61,7 @@ const Tab = createBottomTabNavigator();
       <Tab.Navigator tabBarOptions={{showLabel: false,activeTintColor: 'tomato',inactiveTintColor: 'gray',style: {backgroundColor:'#e1e2e3',paddingBottom:5, borderTopEndRadius:10,borderTopStartRadius:10}}} >
         <Tab.Screen options={{tabBarIcon: ({focused,color}) => (<VideoIcon tintcolor={color}/>) }} name="Videos" component={Home} />
         <Tab.Screen options={{tabBarIcon : ({focused,color}) => (<LiveIcon tintcolor={color}/>)}} name="Live" component={Live} />
-        <Tab.Screen options={{tabBarLabel:'' ,tabBarIcon : ({focused,color}) => (<AddButton tintcolor={color}/>)}} name="AddButton" component={AddButtonComponant} />
+        <Tab.Screen options={{tabBarLabel:'' ,tabBarIcon : ({focused,color}) => (<AddButton tintcolor={color}/>)}} name="AddButton" component={AddWindow} />
         <Tab.Screen options={{tabBarIcon : ({focused,color}) => (<StoreIcon tintcolor={color}/>)}} name="Store" component={Store} />
         <Tab.Screen options={{tabBarIcon : ({focused,color}) => (<ProfileIcon tintcolor={color}/>)}} name="Settings" component={Profile} />
       </Tab.Navigator>

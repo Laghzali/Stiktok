@@ -2,6 +2,7 @@ import React from 'react';
 import {View ,Text, StyleSheet, TouchableHighlight, Animated} from 'react-native'
 import { Entypo } from '@expo/vector-icons'; 
 
+
 class AddButton extends React.Component {
     buttonSize = new Animated.Value(1)
     pressHandler = () => {
@@ -25,11 +26,10 @@ class AddButton extends React.Component {
         return(
         <View style={{alignItems:'center',position:'absolute'}}>
             <Animated.View style={[Styles.Button, sizeStyle]}>
-             <TouchableHighlight onPress={this.pressHandler} underlayColor='#997aff'>
                  <View>
                     <Entypo name="plus" size={40} color="white" />
                  </View>
-             </TouchableHighlight>
+          
             </Animated.View>
         </View>
         )
