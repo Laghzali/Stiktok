@@ -12,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { AntDesign } from '@expo/vector-icons'; 
 import AddWindow from './Componants/AddWindow'
+import Modal from './Componants/AddWindow'
 class LiveIcon extends React.Component {
   render() {
     return (

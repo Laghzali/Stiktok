@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 
 
 const  Styles = StyleSheet.create({
-    body : { 
-      alignItems:'flex-start',
-      
-      flexDirection:'row',
-      flex: 1,
+    Body : {
+      flex:1,
+      flexDirection:'column'
+    },
+    Header : { 
+
     },
     appBar : {
-        flex :1 , 
       },
     containerStyle : {
     }
