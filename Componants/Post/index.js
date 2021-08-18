@@ -21,8 +21,7 @@ const Post = (props) => {
                 style={Styles.Video}
                 ref={video}
                 rate={1.0}
-                shouldPlay
-                isLooping
+
                 resizeMode='stretch'
                 source={{
                   uri: post.videoUrl,
@@ -33,7 +32,7 @@ const Post = (props) => {
                 <View style={Styles.uiContainer}>
                     <View style={Styles.rightContainer}>
                       <TouchableOpacity >
-                          <AntDesign name="like1" size={35} color={post.isLiked ? 'red' : 'white'}/>
+                          <AntDesign name="like1" size={35} color={post.isLiked ? 'tomato' : 'white'}/>
                           <Text style={Styles.iconText}>{post.likes}</Text>
                       </TouchableOpacity>
                       <TouchableOpacity>
@@ -41,7 +40,7 @@ const Post = (props) => {
                            <Text style={Styles.iconText}>{post.comments}</Text>
                       </TouchableOpacity>
                       <TouchableOpacity>
-                          <Entypo name="share" size={35} color={post.isShared ? 'red' : 'white'} />
+                          <Entypo name="share" size={35} color={post.isShared ? 'tomato' : 'white'} />
                           <Text style={Styles.iconText}>{post.shares}</Text>
                       </TouchableOpacity>
                       

@@ -4,7 +4,7 @@ const Styles = StyleSheet.create({
     container : {
   
         width : '100%',
-        height : '100%'
+        height : Dimensions.get('window').height - 70
     },
     Video : {
       position: 'absolute',
