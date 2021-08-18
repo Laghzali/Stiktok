@@ -56,7 +56,8 @@ const Tab = createBottomTabNavigator();
  function App() {
 
   return (
-    
+    <>
+    <StatusBar barStyle="dark-content"></StatusBar>
     <NavigationContainer>
 
       <Tab.Navigator tabBarOptions={{showLabel: false,activeTintColor: 'tomato',inactiveTintColor: 'gray',style: {backgroundColor:'#e1e2e3',paddingBottom:5, borderTopEndRadius:10,borderTopStartRadius:10}}} >
@@ -67,7 +68,9 @@ const Tab = createBottomTabNavigator();
         <Tab.Screen options={{tabBarIcon : ({focused,color}) => (<ProfileIcon tintcolor={color}/>)}} name="Settings" component={Profile} />
       </Tab.Navigator>
     </NavigationContainer>
+    </>
   );
+ 
 }
 
 export default App;
