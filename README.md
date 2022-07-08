@@ -1,4 +1,4 @@
 # Stiktok
 
-npm install
+npm install than 
 expo start
