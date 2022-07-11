@@ -7,22 +7,36 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
+
 const Post = (props) => {
-  const { post, shouldplay } = props
+  const { post, viewable, navigation } = props
+
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
-
+  React.useEffect(() => {
+    if (viewable) {
+      if (viewable.length) {
+        if (viewable[0].id === post.id) {
+          video.current.playAsync();
+        } else { video.current.pauseAsync(); }
+      }
+    }
+  }, [viewable]);
 
   return (
     <View style={Styles.container}>
-      <TouchableWithoutFeedback onPress={() =>
-        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+      <TouchableWithoutFeedback onPress={() => {
+        status.isPlaying ? video.current.pauseAsync() : video.current.playAsync();
+        console.log(video.current)
+        console.log(viewable)
+      }
       }>
         <View style={{ height: Dimensions.get('window').height - 72 }}>
 
           <Video
+
             style={Styles.Video}
-            shouldPlay={shouldplay}
+            shouldPlay={false}
             ref={video}
             rate={1.0}
             resizeMode='cover'
@@ -38,7 +52,7 @@ const Post = (props) => {
                 <AntDesign name="like1" size={35} color={post.isLiked ? 'tomato' : 'white'} />
                 <Text style={Styles.iconText}>{post.likes}</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
                 <FontAwesome name="comments" size={35} color="white" />
                 <Text style={Styles.iconText}>{post.comments}</Text>
               </TouchableOpacity>
