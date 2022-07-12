@@ -15,7 +15,7 @@ const Post = (props) => {
     if (viewable) {
       if (viewable.length) {
         if (viewable[0].id === post.id) {
-          video.current.playAsync();
+          // video.current.playAsync();
         } else { video.current.pauseAsync(); }
       }
     }
