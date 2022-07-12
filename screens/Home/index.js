@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList, Dimensions, SafeAreaView } from 'react-native';
 import Post from '../../Componants/Post'
-import Styles from './Styles'
 import posts from '../../Componants/data/posts'
 const Home = ({ navigation }) => {
 

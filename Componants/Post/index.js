@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, createContext, useState } from 'react';
 import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { Video } from 'expo-av';
 import { Avatar } from 'react-native-paper';
@@ -7,10 +7,8 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
-
 const Post = (props) => {
   const { post, viewable, navigation } = props
-
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   React.useEffect(() => {
@@ -22,13 +20,12 @@ const Post = (props) => {
       }
     }
   }, [viewable]);
-
   return (
     <View style={Styles.container}>
+
       <TouchableWithoutFeedback onPress={() => {
         status.isPlaying ? video.current.pauseAsync() : video.current.playAsync();
-        console.log(video.current)
-        console.log(viewable)
+
       }
       }>
         <View style={{ height: Dimensions.get('window').height - 72 }}>
@@ -52,9 +49,9 @@ const Post = (props) => {
                 <AntDesign name="like1" size={35} color={post.isLiked ? 'tomato' : 'white'} />
                 <Text style={Styles.iconText}>{post.likes}</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Comments')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Comments', { post: post })}>
                 <FontAwesome name="comments" size={35} color="white" />
-                <Text style={Styles.iconText}>{post.comments}</Text>
+                <Text style={Styles.iconText}>{post.comments.count}</Text>
               </TouchableOpacity>
               <TouchableOpacity>
                 <Entypo name="share" size={35} color={post.isShared ? 'tomato' : 'white'} />
@@ -79,5 +76,4 @@ const Post = (props) => {
     </View>
   )
 }
-
 export default Post
