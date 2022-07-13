@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 
-import { StyleSheet, TouchableHighlight, ScrollView, KeyboardAvoidingView, TouchableOpacity, View, Text, Button, Dimensions } from 'react-native';
+import { StyleSheet, TouchableHighlight, ScrollView, KeyboardAvoidingView, TouchableOpacity, View, Text, Keyboard, Button, Dimensions } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 const CommentsWindodw = ({ navigation, route }) => {
@@ -25,7 +25,7 @@ const CommentsWindodw = ({ navigation, route }) => {
 
             <Divider style={{ marginBottom: 10 }}></Divider>
 
-            <ScrollView style={styles.Body}>
+            <ScrollView onScroll={() => Keyboard.dismiss()} style={styles.Body}>
 
                 {post.comments.coms.map((comment) => {
                     return (<View key={comment.id} style={styles.comment}>
