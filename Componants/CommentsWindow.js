@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { Divider } from 'react-native-elements';
-import { TextInput } from 'react-native-paper';
-import { Ionicons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-
-import { StyleSheet, TouchableHighlight, ScrollView, KeyboardAvoidingView, TouchableOpacity, View, Text, Keyboard, Button, Dimensions } from 'react-native';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { Input, Icon } from "@rneui/themed";
+import { StyleSheet, TouchableHighlight, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity, View, Text, Keyboard, Button, Dimensions } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 const CommentsWindodw = ({ navigation, route }) => {
     const [comment, setComment] = React.useState("");
-    const post = route.params.post
+    const post = route.params.post != undefined ? route.params.post : []
     const emptySpace = "" // for the sake of space-between
     console.log(post.comments.coms)
+
     return (
-        <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <KeyboardAvoidingView keyboardVerticalOffset={
+            Platform.select({
+                ios: () => 0,
+                android: () => -400
+            })()} behavior="padding" style={styles.container}>
 
             <SafeAreaView style={styles.Header}>
                 <TouchableHighlight underlayColor='none' style={styles.backButton} onPress={() => navigation.goBack()}>
@@ -25,7 +28,7 @@ const CommentsWindodw = ({ navigation, route }) => {
 
             <Divider style={{ marginBottom: 10 }}></Divider>
 
-            <ScrollView onScroll={() => Keyboard.dismiss()} style={styles.Body}>
+            <ScrollView scrollEventThrottle={32} onScroll={() => Keyboard.dismiss()} style={styles.Body}>
 
                 {post.comments.coms.map((comment) => {
                     return (<View key={comment.id} style={styles.comment}>
@@ -42,26 +45,34 @@ const CommentsWindodw = ({ navigation, route }) => {
                 })}
             </ScrollView>
 
-            <SafeAreaView style={styles.footer}>
+            <View style={styles.footer}>
                 <View style={styles.TextArea}>
-                    <Avatar.Image size={35} source={require('../assets/profile.jpg')} />
-                    <TextInput
+                    <Avatar.Image style={{ marginBottom: 13, }} size={35} source={require('../assets/profile.jpg')} />
+                    <Input
+                        multiline={true}
+                        inputContainerStyle={{ borderBottomWidth: 0, alignItems: 'center', alignSelf: 'center', marginTop: 10 }}
                         style={styles.commentInput}
+                        placeholder={"comment"}
+                        rightIcon={<Icon
+                            raised
+                            name='arrow-right'
+                            size={18}
 
-                        value={comment}
-                        mode={"flat"}
-                        onChangeText={comment => setComment(comment)}
-                        right={< TextInput.Icon size={30} onPress={() => alert('dd?')} color={"tomato"} multiline={true} name="send-circle" />}
+                            type='font-awesome'
+                            color='#f50'
+                            onPress={() => alert('hello')} />}
                     />
                 </View>
-            </SafeAreaView>
+            </View>
         </KeyboardAvoidingView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+
         flex: 1,
+        maxHeight: Dimensions.get('window').height
     },
     Header: {
         alignItems: 'flex-end',
@@ -77,20 +88,8 @@ const styles = StyleSheet.create({
     },
     Body: {
         flex: 1,
+
         flexDirection: 'column'
-    },
-    footer: {
-
-        width: '100%',
-        marginBottom: 'auto'
-    },
-    TextArea: {
-        padding: 10,
-        flex: 1,
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-
     },
     comment: {
         padding: 10,
@@ -98,13 +97,35 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flex: 1,
         justifyContent: 'flex-start'
+    },
+    footer: {
+        width: '100%',
+        marginRight: 10,
+        marginRLeft: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
+
+    },
+    TextArea: {
+        flex: 0,
+        width: '95%',
+        flexDirection: 'row',
+        alignItems: 'center',
     }
     , commentInput: {
+
+        maxHeight: 100,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingTop: 5,
+        paddingBottom: 5,
+        backgroundColor: 'rgba(25, 25, 25, 0.05)',
+        borderRadius: 10,
         marginLeft: 5,
+        flexGrow: 1,
+        width: "10%",
+        fontSize: 13,
 
-        width: "90%",
-
-        marginLeft: '10px'
     }
 })
 

@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
 
   return (
 
-    <View >
+    <View  >
       <FlatList showsVerticalScrollIndicator={false}
         decelerationRate={'fast'}
         snapToAlignment={'start'}

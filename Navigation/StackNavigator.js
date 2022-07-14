@@ -9,7 +9,8 @@ const Stack = createStackNavigator();
 const MainStackNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
-            headerShown: false
+            headerShown: false,
+
         }}>
             <Stack.Screen name="Home" component={BottomTabNavigator} />
             <Stack.Screen name="Comments" component={CommentsWindow} />
