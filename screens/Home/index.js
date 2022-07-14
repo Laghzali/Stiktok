@@ -1,14 +1,15 @@
 import React, { useState, useRef } from 'react';
-import { View, FlatList, Dimensions, StatusBar } from 'react-native';
+import { View, FlatList, Dimensions, StatusBar, SafeAreaView } from 'react-native';
 import Post from '../../Componants/Post'
 import posts from '../../Componants/data/posts'
+
 
 const Home = ({ navigation }) => {
   const [Viewable, SetViewable] = React.useState([]);
   const ref = React.useRef(null);
   const [animate, setAnimate] = useState(false)
   const viewConfigRef = React.useRef({ itemVisiblePercentThreshold: 80 });
-
+  const navbarHeight = Platform.OS === 'ios' ? 74 : StatusBar.currentHeight
   //no idea how this works
   const onViewRef = React.useRef((viewableItems) => {
     let viewableItemsList = [];
@@ -20,18 +21,18 @@ const Home = ({ navigation }) => {
 
   //render
   return (
-    <View  >
+    <View>
       <FlatList showsVerticalScrollIndicator={false}
         decelerationRate={'fast'}
         snapToAlignment={'start'}
-        snapToInterval={Dimensions.get('window').height - StatusBar.currentHeight}
+        snapToInterval={Dimensions.get('window').height - navbarHeight}
         data={posts}
         ref={ref}
         viewabilityConfig={viewConfigRef.current}
         onScrollBeginDrag={() => { setAnimate(true) }}
         onScrollEndDrag={() => { setAnimate(false) }}
         onViewableItemsChanged={onViewRef.current}
-        style={{ height: Dimensions.get('window').height - StatusBar.currentHeight }}
+        style={{ height: Dimensions.get('window').height - navbarHeight }}
         renderItem={({ item }) => <Post navigation={navigation} post={item} animate={animate} viewable={Viewable} />}></FlatList>
 
     </View >

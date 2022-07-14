@@ -9,7 +9,6 @@ const CommentsWindodw = ({ navigation, route }) => {
     const [comment, setComment] = React.useState("");
     const post = route.params.post != undefined ? route.params.post : []
     const emptySpace = "" // for the sake of space-between
-    console.log(post.comments.coms)
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={
@@ -113,7 +112,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     }
     , commentInput: {
-
         maxHeight: 100,
         paddingLeft: 15,
         paddingRight: 15,
@@ -124,7 +122,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         flexGrow: 1,
         width: "10%",
-        fontSize: 13,
+        fontSize: 15,
 
     }
 })

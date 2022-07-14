@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions, StatusBar, Platform, } from 'react-native';
 import { Video } from 'expo-av';
 import { Avatar } from 'react-native-paper';
 import Styles from './Styles';
@@ -12,6 +12,7 @@ const Post = (props) => {
   const [status, setStatus] = React.useState({});
   const [fade, setFade] = useState(0.1)
 
+  const navbarHeight = Platform.OS === 'ios' ? 74 : StatusBar.currentHeight
   //play/pause trigger
   React.useEffect(() => {
     if (viewable) {
@@ -38,13 +39,10 @@ const Post = (props) => {
 
       <TouchableWithoutFeedback onPress={() => {
         status.isPlaying ? video.current.pauseAsync() : video.current.playAsync();
-
       }
       }>
-        <View style={{ height: Dimensions.get('window').height - StatusBar.currentHeight }}>
-
+        <View style={{ height: Dimensions.get('window').height - navbarHeight }}>
           <Video
-
             style={Styles.Video}
             shouldPlay={false}
             ref={video}
@@ -55,7 +53,6 @@ const Post = (props) => {
             }}
             onPlaybackStatusUpdate={status => setStatus(() => status)}
           />
-
           <View style={{ ...Styles.uiContainer, opacity: fade }}>
             <View style={Styles.rightContainer}>
               <TouchableOpacity >
