@@ -5,8 +5,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainStackNavigator from './Navigation/StackNavigator';
 const Tab = createBottomTabNavigator();
-
-
 function App() {
   console.log(Tab.Navigator)
   return (

@@ -4,7 +4,6 @@ const Styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
     width: '100%',
-    height: Dimensions.get('window').height - 72
   },
 
   Video: {

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, TouchableWithoutFeedback, Dimensions, StatusBar } from 'react-native';
 import { Video } from 'expo-av';
 import { Avatar } from 'react-native-paper';
 import Styles from './Styles';
 import { AntDesign, FontAwesome, Entypo } from '@expo/vector-icons';
-import { BlurView } from 'expo-blur';
+
 
 const Post = (props) => {
-
   const { post, viewable, navigation, animate } = props
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   const [fade, setFade] = useState(0.1)
+
+  //play/pause trigger
   React.useEffect(() => {
     if (viewable) {
       if (viewable.length) {
@@ -22,6 +23,7 @@ const Post = (props) => {
     }
   }, [viewable]);
 
+  //opacity rate for ui
   React.useEffect(() => {
     if (animate) {
       setFade(0.8)
@@ -29,6 +31,8 @@ const Post = (props) => {
       setFade(1)
     }
   }, [animate]);
+
+  //render
   return (
     <View style={Styles.container}>
 
@@ -37,7 +41,7 @@ const Post = (props) => {
 
       }
       }>
-        <View intesity={10} tint="light" style={{ height: Dimensions.get('window').height - 72 }}>
+        <View style={{ height: Dimensions.get('window').height - StatusBar.currentHeight }}>
 
           <Video
 

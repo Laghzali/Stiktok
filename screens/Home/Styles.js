@@ -1,19 +1,20 @@
-import {StyleSheet , Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import React, { Component } from 'react';
 
 
-const  Styles = StyleSheet.create({
-  
-    Body : {
+const Styles = StyleSheet.create({
 
-    },
-    Header : { 
+  Body: {
 
-    },
-    appBar : {
-      },
-    containerStyle : {
-    }
+  },
+  Header: {
+
+  },
+  appBar: {
+
+  },
+  containerStyle: {
+  }
 })
 
 export default Styles
