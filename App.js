@@ -4,6 +4,7 @@ import { StatusBar, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MainStackNavigator from './Navigation/StackNavigator';
+import Header from './screens/Header';
 const Tab = createBottomTabNavigator();
 function App() {
   console.log(Tab.Navigator)

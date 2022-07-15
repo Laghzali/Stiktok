@@ -7,7 +7,7 @@ import { AntDesign } from '@expo/vector-icons';
 export class LiveIcon extends React.Component {
     render() {
         return (
-            <Feather name="radio" size={28} color={this.props.tintcolor} />
+            <Feather name="radio" size={this.props.size ? this.props.size : 28} color={this.props.tintcolor} />
         )
     }
 }
@@ -16,7 +16,7 @@ export class VideoIcon extends React.Component {
     render() {
         return (
 
-            <Entypo name="video-camera" size={22} color={this.props.tintcolor} />
+            <Entypo name="video-camera" size={this.props.size ? this.props.size : 22} color={this.props.tintcolor} />
 
         )
     }
